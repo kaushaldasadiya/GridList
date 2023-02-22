@@ -1,0 +1,52 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_application_7/main.dart';
+
+void main() {
+  runApp(const MyApp());
+}
+
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
+
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  List<String> myimageslist = [
+    "https://images.unsplash.com/photo-1461749280684-dccba630e2f6",
+    "https://images.unsplash.com/photo-1627398242454-45a1465c2479",
+    "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "https://images.unsplash.com/photo-1516259762381-22954d7d3ad2",
+    "https://images.unsplash.com/photo-1562813733-b31f71025d54",
+    "https://images.unsplash.com/photo-1627399270231-7d36245355a9",
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'MyApp',
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text('MyApp'),
+        ),
+        body: Container(
+          child: GridView.builder(
+            itemCount: myimageslist.length,
+            padding: const EdgeInsets.all(10),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 10.0,
+              mainAxisSpacing: 10.0,
+              mainAxisExtent: 200,
+            ),
+            itemBuilder: (BuildContext context, int index) {
+              return Image.network(myimageslist[index], fit: BoxFit.cover);
+            },
+          ),
+        ),
+      ),
+    );
+  }
+}
